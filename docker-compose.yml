@@ -41,6 +41,8 @@ services:
       - elk
     depends_on:
       - elasticsearch
+      - kibana
+      - logstash
 
   elasticsearch:
     build:
