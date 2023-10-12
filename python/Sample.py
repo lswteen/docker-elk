@@ -5,7 +5,8 @@ es = Elasticsearch([{'host': 'localhost', 'port': 9200}])
 
 # 인덱스 생성
 index_name = 'sample_index'
-es.indices.create(index=index_name, ignore=400)
+if not es.indices.exists(index=index_name):
+    es.indices.create(index=index_name)
 
 # 예제 데이터 생성
 sample_data = [
