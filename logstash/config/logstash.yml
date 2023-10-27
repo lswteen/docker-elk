@@ -3,5 +3,9 @@
 ## https://github.com/elastic/logstash/blob/main/docker/data/logstash/config/logstash-full.yml
 #
 http.host: 0.0.0.0
+xpack.monitoring.elasticsearch.hosts: [ "http://elasticsearch:9200" ]
 
-node.name: logstash
+xpack.management.enabled: true
+xpack.management.elasticsearch.username: logstash_internal
+xpack.management.elasticsearch.password: ${LOGSTASH_INTERNAL_PASSWORD}
+xpack.management.logstash.poll_interval: 5s
