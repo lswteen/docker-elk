@@ -42,6 +42,7 @@ services:
     depends_on:
       - elasticsearch
       - kibana
+      - h2
       - logstash
 
   elasticsearch:
@@ -77,6 +78,7 @@ services:
     volumes:
       - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro,Z
       - ./logstash/pipeline:/usr/share/logstash/pipeline:ro,Z
+      - ./logstash/jdbc/h2-2.1.214.jar:/usr/share/logstash/jdbc/h2-2.1.214.jar:ro,Z  # Added volume for H2 JDBC driver-
     ports:
       - 5044:5044
       - 50000:50000/tcp
@@ -106,6 +108,20 @@ services:
       - elk
     depends_on:
       - elasticsearch
+    restart: unless-stopped
+
+  h2:
+    container_name: h2
+    image: oscarfonts/h2:latest
+    ports:
+      - 1521:1521
+      - 8081:81
+    environment:
+      H2_OPTIONS: -ifNotExists
+    volumes:
+      - ./h2/:/opt/h2-data
+    networks:
+      - elk
     restart: unless-stopped
 
 networks:
