@@ -119,7 +119,7 @@ services:
     environment:
       H2_OPTIONS: -ifNotExists
     volumes:
-      - ./h2/:/opt/h2-data
+      - ./h2/opt/h2-data/:/opt/h2-data
     networks:
       - elk
     restart: unless-stopped

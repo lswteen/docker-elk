@@ -1,0 +1,20 @@
+input {
+  jdbc {
+    jdbc_driver_library => "/usr/share/logstash/jdbc/h2-2.1.214.jar"
+    jdbc_driver_class => "org.h2.Driver"
+    jdbc_connection_string => "jdbc:h2:tcp://h2:1521/opt/h2-data/test;DB_CLOSE_ON_EXIT=FALSE"
+    jdbc_user => ""
+    jdbc_password => ""
+    schedule => "* * * * *"
+    statement => "select * from product"
+  }
+}
+output {
+  elasticsearch {
+    hosts => ["elasticsearch:9200"]
+    index => "product-index"
+    user => "logstash_internal"
+    password => "${LOGSTASH_INTERNAL_PASSWORD}"
+  }
+  stdout { codec => rubydebug }
+}

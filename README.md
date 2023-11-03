@@ -33,6 +33,7 @@ Other available stack variants:
 
 ```sh
 docker-compose up setup
+
 ```
 
 ```sh
