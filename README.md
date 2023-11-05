@@ -37,6 +37,10 @@ logstash > pipline > h2toelasticsearch.conf
 logstash > pipline > logstash.conf
 
 ---
+## Nori 오픈 라이브러리 설치 
+
+
+---
 
 ## tl;dr
 
