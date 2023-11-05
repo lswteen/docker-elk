@@ -26,6 +26,15 @@ Other available stack variants:
 > this evaluation period, you will retain access to all the free features included in the Open Basic license seamlessly,
 > without manual intervention required, and without losing any data. Refer to the [How to disable paid
 > features](#how-to-disable-paid-features) section to opt out of this behaviour.
+---
+## Docker Compose LogStash Pipline
+### h2 to Elasticsearch 
+
+logstash > pipline > h2toelasticsearch.conf
+
+### logstash log to Elasticsearch
+
+logstash > pipline > logstash.conf
 
 ---
 
