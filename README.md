@@ -38,7 +38,30 @@ logstash > pipline > logstash.conf
 
 ---
 ## Nori 오픈 라이브러리 설치 
+"Nori analysis-nori" Elasticsearch 용도 한글 형태소 분석기 플러그인 
 
+Elasticsearch Docker Cantainer 내부에 설치
+ES를 멀티로 구축했을경우 
+예를들어 ES01, ES02, ES03 ... 
+설치되어 있는 수만큼 한글 형태소 분석기 설치 필수
+
+```shell
+docker exec -it {컨테이너ID}  /bin/bash
+
+예시)
+elasticsearch@41bb0b200213:~$ bin/elasticsearch-plugin install analysis-nori
+-> Installing analysis-nori
+-> Downloading analysis-nori from elastic
+[=================================================] 100%??
+-> Installed analysis-nori
+-> Please restart Elasticsearch to activate any plugins installed
+elasticsearch@41bb0b200213:~$ exit
+exit
+(base) renzo@MI-1-renzo1980 docker-elk % docker-compose restart elasticsearch
+
+---
+
+```
 
 ---
 
